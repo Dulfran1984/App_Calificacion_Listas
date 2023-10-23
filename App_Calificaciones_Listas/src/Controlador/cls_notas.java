@@ -18,6 +18,8 @@ public class cls_notas {
         this.flt_seguimiento = seguimiento;
         this.str_fecha = fecha;
         this.str_asignatura = asignatura;
+        this.flt_final = (float)((this.flt_nota1 * 0.25) + (this.flt_nota2 * 0.25) + 
+                (this.flt_seguimiento * 0.50));
     }
 
     public String getStr_nombre() {
