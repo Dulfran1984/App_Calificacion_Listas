@@ -122,6 +122,11 @@ public class frm_calificaciones extends javax.swing.JFrame {
         });
 
         btn_consultar.setText("Consultar");
+        btn_consultar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_consultarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -275,6 +280,29 @@ public class frm_calificaciones extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null, "Calificación registrada con éxito","Guardar",
                 JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_btn_guardarActionPerformed
+
+    private void btn_consultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_consultarActionPerformed
+        bln_sw = false;
+        int_posicion = 0;
+        for(int i = 0; i < obj_calificaciones.size(); i++){
+            if(txt_codigo.getText().equals(obj_calificaciones.get(i).getStr_codigo())){
+                bln_sw = true;
+                int_posicion = i;
+                break;
+            }
+        }
+        if(bln_sw == false){
+            JOptionPane.showMessageDialog(null, "No se encontraron registros","Consultar",JOptionPane.ERROR_MESSAGE);
+        }else{
+            txt_asignatura.setText(obj_calificaciones.get(int_posicion).getStr_asignatura());
+            txt_nota1.setText(""+obj_calificaciones.get(int_posicion).getFlt_nota1());
+            txt_nota2.setText(""+obj_calificaciones.get(int_posicion).getFlt_nota2());
+            txt_fecha.setText(obj_calificaciones.get(int_posicion).getStr_fecha());
+            txt_nombres.setText(obj_calificaciones.get(int_posicion).getStr_nombre());
+            txt_seguimiento.setText(""+obj_calificaciones.get(int_posicion).getFlt_seguimiento());
+            lbl_definitiva.setText(""+obj_calificaciones.get(int_posicion).getFlt_final());
+        }
+    }//GEN-LAST:event_btn_consultarActionPerformed
 
     /**
      * @param args the command line arguments
